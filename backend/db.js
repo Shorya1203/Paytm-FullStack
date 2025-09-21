@@ -1,6 +1,7 @@
 const mongoose = require('mongoose') ; 
 const { float64 } = require('zod');
 
+
 // Defining the User Schema First
 const userSchema = new mongoose.Schema({
     username: {

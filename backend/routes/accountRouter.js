@@ -40,7 +40,7 @@ router.post('/transfer', authMiddleware, async (req, res) => {
 
     try{
         const transferSchema = zod.object({
-            amount: zod.number().positive(0),
+            amount: zod.number().positive(),
             to: zod.email({message: "to username must be a valid email"})
         })
 

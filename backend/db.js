@@ -1,7 +1,6 @@
 const mongoose = require('mongoose') ; 
 const { float64 } = require('zod');
 
-mongoose.connect('mongodb+srv://Shorya1203:ShoryaSharma@shoryacluster.eiyaa3j.mongodb.net/Paytm')
 
 // Defining the User Schema First
 const userSchema = new mongoose.Schema({

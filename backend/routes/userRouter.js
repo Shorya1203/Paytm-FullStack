@@ -1,6 +1,6 @@
 const express = require('express') ; 
 const router = express.Router() ; 
-const User = require('../db.js') ;
+const {User, Account} = require('../db.js') ;
 const authMiddlware = require('../middlewares/authMiddleware');
 const JWT_SECRET = require('../config.js') ; 
 const jwt = require('jsonwebtoken') ; 
@@ -41,10 +41,20 @@ router.post('/signup', async (req, res) => {
         const newUser = new User({username, firstName, lastName, password}) ; 
 
         const savedUser = await newUser.save() 
+
+        const userId = savedUser._id ; 
+        const balance = 1 + Math.random()*10000 ; 
         
+        const newAccount = new Account({
+            userId, balance 
+        }) ; 
+
+        const savedAccount = await newAccount.save() ; 
+
         res.status(200).json({
             userId: `${savedUser._id} has been created`,
         });
+
     } catch (error) {
         res.status(500).json({ message: 'Server error.', error: error.message });
     }
@@ -151,4 +161,6 @@ router.get('/bulk', authMiddlware, async (req, res) => {
     })
 
 })
+
+
 module.exports = router; 

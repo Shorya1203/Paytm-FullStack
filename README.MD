@@ -43,4 +43,21 @@ Step-8) User Routes
 --> Create a route to update the information
 --> create a route for user to get the other users from the backend -> route (api/v1/user/bulk) & queryParameter: ?filter = harkirat
 
+Step-9) Creating the Bank Related Schema
+-> In a payment application we store 8888 instead of 88.88 and then convert back.
 
+Step-10) Transactions in databases
+--> A lot of times, you want multiple databases transactions to be atomic
+--> Either all of them should update or none should.
+--> Revert everything if some issue came => Rollback everything if something fails.
+--> We will do a transacations
+--> Also there is another issue, if two requests came at the same time (with lets say send 10rs to user A and user B) => and the user only has balance of 10rs => Then it may be possible that both of the requests are fulfilled.
+
+Step-11) Initialize balances on signup => Give each user a random balance between 1 and 10000.
+
+Step-12) Creating a new route for the accounts -> all the requests with api/v1/account will be handled through the accountRouter
+
+Step-13) Balance and transfer endpoints :
+-> first endpoints for user to get their balance.
+-> An endpoint for user to transfer money to other account 
+-> for the second endpoint we have two problems -> concurrent request can pass even if we have insufficient balance & second partial changes can happen due to nodejs process being failed or DB going off.

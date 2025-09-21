@@ -1,5 +1,7 @@
 const mongoose = require('mongoose') ; 
+const { float64 } = require('zod');
 
+mongoose.connect('mongodb+srv://Shorya1203:ShoryaSharma@shoryacluster.eiyaa3j.mongodb.net/Paytm')
 
 // Defining the User Schema First
 const userSchema = new mongoose.Schema({
@@ -31,6 +33,22 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+const accountSchema = mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    balance: {
+        type: Number,
+        required: true,
+        default: 0
+    }
+}) ; 
+
 // Creating the model based on the above schema
-const User = mongoose.model('User', userSchema) ; 
-module.exports = User;
+const User = mongoose.model('User', userSchema) ;
+const Account = mongoose.model('Account', accountSchema) ;  
+module.exports = {
+    User, Account
+};

@@ -3,6 +3,7 @@ const router = express.Router() ;
 const authMiddleware = require('../middlewares/authMiddleware.js');
 const { User, Account } = require('../db.js');
 const mongoose = require('mongoose') ; 
+const zod = require('zod'); 
 
 
 router.get('/balance', authMiddleware, async (req, res) => {
@@ -38,6 +39,20 @@ router.post('/transfer', authMiddleware, async (req, res) => {
     // Now we will do multiple things together and if anyone fails revert back 
 
     try{
+        const transferSchema = zod.object({
+            amount: zod.number().positive(0),
+            to: zod.email({message: "to username must be a valid email"})
+        })
+
+        const validationResult = transferSchema.safeParse(req.body); 
+
+        if (!validationResult.success) {
+            return res.status(400).json({ 
+                message: 'Validation failed.', 
+                errors: validationResult.error.errors 
+            });
+        }
+
         const session = await mongoose.startSession() ;
 
         session.startTransaction() ; 

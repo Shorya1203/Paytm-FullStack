@@ -1,6 +1,8 @@
 const mongoose = require('mongoose') ; 
 const { float64 } = require('zod');
-
+require('dotenv').config() ; 
+const MONGODB_URL = process.env.MONGODB_URL;
+mongoose.connect(MONGODB_URL)
 
 // Defining the User Schema First
 const userSchema = new mongoose.Schema({

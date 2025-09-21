@@ -32,4 +32,15 @@ step 5)
 -> Adding body parser to the api's 
 -> Adding jsonwebtokens
 
+Step 6)
+-> Adding backend routes
+-> Signup -> This route needs the user information, do input validation and store the information in the database provided.
+
+Step 7) 
+--> Add a middleware to make sure only the authenticated users can hit it. We are introducing an auth middleware.
+
+Step-8) User Routes
+--> Create a route to update the information
+--> create a route for user to get the other users from the backend -> route (api/v1/user/bulk) & queryParameter: ?filter = harkirat
+
 

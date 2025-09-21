@@ -1,0 +1,35 @@
+# We are building paytm like application that let's users send money to each other given an initial dummy balance
+
+# Steps: 
+
+Step 1) 
+
+-> Connect to the MongoDB instance
+-> We need 3 routes for the user :
+    -> Allow user to sign up
+    -> Allow user to sign in
+    -> Allow user to update their information (firstName, lastName, password) 
+
+Step 2)
+-> Creating the Mongoose Schema for the users table
+-> Importing Mongoose and connecting to a Mongo Database
+-> Creating the mongoose schema for users table
+-> Export the mongoose model from the file(calling it user)
+
+Step 3)
+-> In the index.js file, route the all requests to /api/v1 to a apiRouter defined in backend/routes/index.js
+
+-> Create a new file in bakcned/routes/index.js that exports the express router
+-> import the router in index.js and route the requests from /api/v1 to it
+
+Step 4) 
+Create a new user router and import it in index router.
+Route all the requests that go to /api/v1/user to the user router
+Import all the userRouter in backneed/routes/index.js so all requests to /api/v1/user get routed to the userRouter
+
+step 5)
+-> Adding cors to the api's;
+-> Adding body parser to the api's 
+-> Adding jsonwebtokens
+
+

@@ -21,7 +21,7 @@ router.get('/balance', authMiddleware, async (req, res) => {
         const balance = account.balance; 
 
         return res.status(200).json({
-            balance: `balance is ${balance}` 
+            balance 
         }) ; 
         
     }catch(err){
@@ -43,7 +43,7 @@ router.post('/transfer', authMiddleware, async (req, res) => {
             amount: zod.number().positive(),
             to: zod.email({message: "to username must be a valid email"})
         })
-
+        req.body.amount = parseInt(req.body.amount);
         const validationResult = transferSchema.safeParse(req.body); 
 
         if (!validationResult.success) {

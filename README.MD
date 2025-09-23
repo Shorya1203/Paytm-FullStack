@@ -75,3 +75,25 @@ Built using **Node.js, Express, MongoDB, Mongoose, JWT, and React**, it demonstr
 
 ## 🏗️ Project Structure  
 
+backend/
+│── index.js # Main server file
+│── db.js # MongoDB connection
+│── models/
+│ └── user.js # User schema & model
+│ └── account.js # Account schema & model
+│── routes/
+│ └── index.js # API router
+│ └── user.js # User routes
+│ └── account.js # Account routes
+│── middleware/
+│ └── auth.js # JWT authentication middleware
+
+frontend/
+│── src/
+│ ├── pages/
+│ │ └── Signup.jsx
+│ │ └── Signin.jsx
+│ │ └── Dashboard.jsx
+│ │ └── SendMoney.jsx
+│ ├── components/ # Reusable components
+│ ├── App.jsx # React Router setup
